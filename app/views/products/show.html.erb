@@ -1,0 +1,21 @@
+<div class="page-header">
+	<h2><%=@product.title %></h2>
+</div>
+
+	<div class="col-md-4 product-detail">
+		<%=image_tag @product.photo.url(:small), :class=>'image_id'%>
+	</div>
+	<div class="col-md-8 product-des">
+		<div style="width:100%; font-size:18px; font-weight:600; margin-bottom:10px;"><%=@product.des%></div>
+		<div style="width:100%; font-size:26px; font-style:italic;color:#B51111; margin-bottom:10px"><%=number_to_currency(@product.price)%></div>
+		<div style="width:100%; font-size:16px; margin-bottom:10px;"><lable>Quantity : </lable><%=@product.quantity%> <label> items</label></div>
+		<div class="addtocart " style="position:static">
+							<form action="/cart/add_to_cart/" method="get">
+								<input type="hidden" name="id" value='<%= @product.id %>' />
+								<input type="hidden" name="name" value=' <%=@product.title%>' />
+								<input type="hidden" name="price" value=' <%=@product.price%>' />
+								<input type="hidden" name="quantity" value=' <%=@product.quantity%>' />
+								<input type="submit" value="Add to cart" class="btn btn-primary " />
+							</form>
+						</div>
+	</div>

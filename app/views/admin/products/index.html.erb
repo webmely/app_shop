@@ -1,0 +1,42 @@
+<div class="page-header">
+	<h2>Products <a href="/admin/products/new" class="btn btn-primary" style="float:right">Add new product</a></h2>
+
+</div>
+<table class="table table-bordered">
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Price</th>
+		<th>Quantity</th>
+		<th>Image</th>
+		<th></th>
+	</tr>
+	<% @products.each do |u| %>
+		<tr>
+			<td><%= u.id%></td>
+			<td><%= u.title%></td>
+			<td><%= u.des%></td>
+			<td><%= number_to_currency(u.price) %></td>
+			<td><%= u.quantity%></td>
+			<td><%=image_tag u.photo.url(:thumb_small) %></td>
+			<td style="width:170px;">
+				<a href='<%=admin_product_path(u) %>' class="icon glyphicon glyphicon-share" alt="Show details user"></a> 
+				<a href='<%=edit_admin_product_path(u)%>' class="icon glyphicon glyphicon-edit"></a> 
+				<%= link_to '', admin_product_path(u),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'icon glyphicon glyphicon-remove-circle', style: "border-right:none" %>
+			</td>
+		</tr>
+	<%end%>
+</table>
+<%= paginate @products %>
+<style type="text/css">
+	table th{
+		text-align: center;
+	}
+	table td{
+		text-align: center;
+		vertical-align: middle !important;
+	}
+</style>

@@ -1,0 +1,41 @@
+<div class="page-header">
+	<h2>Users <a href="/admin/users/new" class="btn btn-primary" style="float:right">Add new user</a></h2>
+
+</div>
+<table class="table table-bordered">
+	<tr>
+		<th>Id</th>
+		<th>email</th>
+		<th>fullname</th>
+		<th>address</th>
+		<th>phone</th>
+		<th>role</th>
+		<th></th>
+	</tr>
+	<% @users.each do |u| %>
+		<tr>
+			<td><%= u.id%></td>
+			<td><%= u.email%></td>
+			<td><%= u.fullname%></td>
+			<td><%= u.address%></td>
+			<td><%= u.phone%></td>
+			<td><%= u.role%></td>
+			<td style="width:170px;">
+				<a href='<%=admin_user_path(u) %>' class="icon glyphicon glyphicon-share" alt="Show details user"></a> 
+				<a href='<%=edit_admin_user_path(u)%>' class="icon glyphicon glyphicon-edit"></a> 
+				<%= link_to '', admin_user_path(u),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'icon glyphicon glyphicon-remove-circle', style: "border-right:none" %>
+			</td>
+		</tr>
+	<%end%>
+</table>
+<%= paginate @users %>
+<style type="text/css">
+	table th{
+		text-align: center;
+	}
+	table td{
+		text-align: center;
+	}
+</style>

@@ -1,0 +1,37 @@
+<div class="page-header">
+	<h2 style="text-transform:none;">Search results for : <strong style="text-transform:none"><%=params[:q]%></strong></h2>
+</div>
+<% if !@search.empty? %>
+<div class="row">
+	
+	<%@search.each do |product|%>
+		<div class="box">
+			<div class="product-title"><%=link_to product.title , product_path(product) %></div>
+			<%=image_tag product.photo.url(:small)%>
+			<!-- overlay-->
+			
+			<div class="overbox">
+				<div class="title overtext-des" style="text-transform:none">
+				<a href='<%=product_path(product)%>'><%= product.title %></a></div>
+    			<div class="title overtext"><%= number_to_currency(product.price) %></div>
+    			<div class="tagline overtext">
+    				<form action="/cart/add_to_cart/" method="get">
+								<input type="hidden" name="id" value='<%= product.id %>' />
+								<input type="hidden" name="name" value=' <%=product.title%>' />
+								<input type="hidden" name="price" value=' <%=product.price%>' />
+								<input type="hidden" name="quantity" value=' <%=product.quantity%>' />
+								<input type="submit" value="Add to cart" class="btn btn-primary " />
+							</form>
+    			</div>
+  			</div>
+  			
+		</div>
+
+	<%end%>
+
+
+</div>
+<%= paginate @search  %>
+<%else%>
+	<h3>Ohh . Sorry no result for : <strong style="text-transform:none"> <%=params[:q]%></strong></h3>
+<%end%>

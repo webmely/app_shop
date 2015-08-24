@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h2>Details product <a href="/admin/products" class="btn btn-primary" style="float:right">Back</a></h2>
+
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-6 col-md-4">
+			<p class="lable-p">Product Name</p>
+			<p class="lable-p">Description</p>
+			<p class="lable-p">Price</p>
+			<p class="lable-p">Quantity</p>
+			<p class="lable-p" style="height:251px">Image</p>
+		</div>
+		<div class="col-xs-6 col-md-4">
+			<p class="lable-data"><%= @product.title %></p>
+			<p class="lable-data"><%= @product.des %></p>
+			<p class="lable-data"><%= number_to_currency(@product.price) %></p>
+			<p class="lable-data"><%= @product.quantity %></p>
+			<p class="lable-data"><%= image_tag @product.photo.url(:small)%></p>
+		</div>
+	</div>
+</div>

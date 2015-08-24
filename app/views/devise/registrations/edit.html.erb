@@ -1,0 +1,44 @@
+
+<div class="page-header">
+  <h2>Edit User Information<a href="/users/show" class="btn btn-primary" style="float:right">Back</a></h2>
+</div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, class: 'form-control', readonly:true %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :fullname %> 
+    <%= f.text_field :fullname, autocomplete: "off", class: 'form-control', placeholder: 'Enter you fullname' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, autocomplete: "off", class: 'form-control', placeholder: 'Enter you address' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone %> 
+    <%= f.text_field :phone, autocomplete: "off", class: 'form-control', placeholder:'Enter you phone' %>
+  </div>
+    <div class="form-group">
+    <%= f.label 'Current password' %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Enter you current password" %>
+  </div>
+
+  <div class="form-group">
+    <%=f.submit 'Update User', :class=>'btn btn-primary' %>
+      <button type="reset" class="btn btn-danger">Reset</button>
+  </div>
+<% end %>
+
+
+

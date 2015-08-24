@@ -1,0 +1,20 @@
+<div class="page-header">
+	<h2>User Information <a href="/users/edit" class="btn btn-primary" style="float:right">Edit Profile</a></h2>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-6 col-md-4">
+			<p class="lable-p">Fullname</p>
+			<p class="lable-p">Email</p>
+			<p class="lable-p">Address</p>
+			<p class="lable-p">Phone</p>
+			
+		</div>
+		<div class="col-xs-6 col-md-8">
+			<p class="lable-data"><%= current_user.fullname %></p>
+			<p class="lable-data"><%= current_user.email %></p>
+			<p class="lable-data"><%= current_user.address %></p>
+			<p class="lable-data"><%= current_user.phone %></p>
+		</div>
+	</div>
+</div>

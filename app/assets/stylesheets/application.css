@@ -1,0 +1,685 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require twitter/bootstrap
+ */
+ /*style for footer*/
+ .cart-content{
+ 	 width:190px; float:right; height:60px; margin:10px; text-align:left; padding-left:10px; 
+ }
+ footer{
+ 	margin-top: 40px;
+ 	color: #fff;
+ 	border-top:solid 2px #fff;
+ 	background: none #222222;
+ }
+ #footer-top{
+ 	padding: 55px 0;
+ }
+ #footer-top .footer-about h3{
+ 	font-size: 16px;
+ 	line-height: 18px;
+ 	padding: 0 0 12px 0;
+ 	margin: 20px 0;
+ 	border-bottom: solid 0px #ccc;
+ 	color: #ccc;
+ 	font-weight: 800;
+ 	text-transform: uppercase;
+ }
+ #footer-top .footer-about p{
+ 	font-size: 13px;
+ 	color: #ccc;
+ 	font-weight: 300;
+ }
+ .media-list{
+ 	padding-left: 0;
+ 	list-style: none;
+ }
+ .media:first-child{
+ 	margin-top: -10px !important;
+ }
+ .copyright{
+ 	border-top:solid 1px #000;
+ 	padding: 15px 0;
+ 	background-color: rgba(0,0,0,0.5);
+ 	font-weight: 300;
+ 	color: #999999;
+ 	font-size: 13px;
+ }
+.nav a{
+	text-decoration: none;
+}
+.nav li:hover{
+	background: red;
+}
+/** for login form **/
+
+/** end for login **/
+
+.jumbotron {
+	margin-top: 10px;
+	text-align: center;
+	
+}
+.jumbotron h3{
+	font-weight: 300;
+	font-size: 50px;
+	line-height: 55px;
+
+}
+.jumbotron h4{
+	font-weight: 300;
+	font-size: 26px;
+	line-height: 30px;
+	margin: 0 0 20px 0;
+}
+.jumbotron a:link{
+	text-decoration: none;
+	color: #000 !important;
+}
+.jumbotron a{
+	color:#fff;
+}
+.product{
+	margin-bottom: 20px;
+}
+.product img{
+	width:252px;
+	height: 252px;
+	position: relative;
+}
+.image_index{
+	width:292.5px;
+	height: 240px;
+}
+.product_image{
+	width:252.484px;
+	height: 252px;
+}
+
+.product_info{
+	text-align: center;
+}
+.product_info a{
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: 500;
+}
+.price{
+	font-size: 18px;
+	position: absolute;
+	bottom: 0;
+	z-index:100;
+	background: rgba(153, 153, 153, 0.78);
+	width:86%;
+	padding: 10px 0 10px 10px;
+}
+.price:hover{
+	background: #ccc;
+
+}
+.price span{
+	font-weight: 700;
+	font-style: italic;
+	color:#B51111;
+}
+
+.addtocart{
+	position: absolute;
+	bottom: 5px;
+	z-index: 100;
+	right:10px;
+
+}
+.price strong{
+	color:#090909;
+	font-size: 17px;
+
+}
+.product-title{
+	
+	padding: 10px 0;
+	z-index:100;
+	background: #304562;
+	position: absolute;
+	width:98%;
+	font-size: 18px;
+	text-align: center;
+	
+}
+.product-title:hover{
+	background: #ccc;
+}
+.product-title a{
+	color: #fff;
+	font-weight: 700;
+}
+.product-title a:hover{
+	text-decoration: none;
+	color: #fff;
+}
+/** --------- Cart -- **/
+.cart th, .cart td{
+	text-align: center;
+}
+.input-quantity{
+	width:100px !important;
+	display: inline !important;
+}
+.button-navigation{
+	float:right !important;
+	text-align: right;
+}
+.button-navigation a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.logo-title{
+	width:100%;
+	font-size: 36px;
+	font-weight: 300;
+	padding: 10px 0 0 0;
+	line-height: 42px;
+	text-shadow: 1px 1px 0 #fff;
+	color: #777777;
+}
+.head-custom a{
+	width:315px;
+	height: 90px;
+}
+
+.head-custom a:hover{
+	text-decoration: none;
+}
+.logo-subtitle{
+	font-size: 13px;
+	font-weight: 300;
+	text-shadow: 1px 1px 0 #777777;
+}
+.cart-info{
+	padding-top: 10px;
+	font-size: 16px;
+	margin-bottom: 0px;
+}
+.cart-info2{
+	font-size: 16px;
+	color: #B51111;
+}
+.cart-info3{
+	width:270px; 
+	
+	float:right; 
+	margin:13px 10px 13px 0px;
+	border-radius: 5px;
+	background: rgba(86, 80, 80, 0.19);
+}
+.button-submit{
+	border-top: #000 solid 1px !important;
+	margin-top: 30px;
+	padding-top: 15px;
+}
+.lable-p{
+	font-size: 16px;
+	font-weight: 500;
+	font-style: italic;
+	border-bottom: #ccc solid 1px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+
+}
+.lable-data{
+	font-style: italic;
+	font-weight: 500;
+	font-size: 16px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	border-bottom: #ccc solid 1px;
+}
+.col-xs-6, .col-md-4, .col-md-8{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.search{
+	width:450px; 
+	
+	float:right;
+	line-height: 55px;
+	padding:10px;
+	margin: 13px 10px 13px 0;
+}
+.search input{
+	width: 429px;
+	font-size: 20px;
+	font-style: italic;
+	height: 60px !important;
+}
+.page-header h2{
+	text-transform: uppercase;
+}
+
+/**Effect for product image**/
+
+.box {
+  cursor: pointer;
+  height: 246px;
+  position: relative;
+  overflow: hidden;
+  width: 28%;
+  margin:0 20px 20px 20px;
+  float:left;
+}
+.box img {
+  position: absolute;
+  left: 0;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+.box .overbox {
+	height: auto;
+	background-color: #304562;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  z-index: 100;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  opacity: 0;
+  width: 98%;
+  
+  padding: 70px 20px;
+}
+.title a{
+	color: #fff;
+}
+.title a:hover{
+	text-decoration: none;
+	color: #B51111;
+}
+.box:hover .overbox { opacity: 1; }
+.box .overtext {
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  transform: translateY(40px);
+  -webkit-transform: translateY(40px);
+}
+ 
+.box .title {
+  font-size: 2.5em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.1s;
+  transition-duration: 0.2s;
+}
+ 
+.box:hover .title,
+.box:focus .title {
+  opacity: 1;
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+}
+ 
+.box .tagline {
+  font-size: 0.8em;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.2s;
+}
+ 
+.box:hover .tagline,
+.box:focus .tagline {
+  opacity: 1;
+  transform: translateX(0px);
+  -webkit-transform: translateX(0px);
+}
+footer img{
+	width: 100%;
+}
+
+@media all and (max-width: 320px) {
+	footer .row{
+		margin: 0;
+	}
+	footer{
+		float:left;
+
+	}
+	.container{
+		float: left;
+	}
+	.navbar-default{
+		width:100%;
+	}
+	.footer-image{
+		width:90%;
+	}
+	.product-title{
+		width: 100%;
+	}
+
+	.logo-title{
+		
+		font-size: 24px;
+		width: 70%;
+		padding: 0;
+
+	}
+	.search input{
+		width:94%;
+		margin: 0 10px;
+		font-size: 13px;
+	}
+
+	.search{
+		width: 100%;
+		float:left;
+		position: relative;
+		padding: 0;
+	}
+	.head-custom{
+		position: relative;
+	}
+	.navbar{
+		float:left;
+	}
+	.cart-info3{
+		width: 94%;
+		margin: 0 10px 13px 10px;
+	}
+
+	.navbar-text strong{
+		width:100%;
+	}
+	footer img{
+		width:100%;
+	}
+	.box{
+		width: 87%;
+	}
+	.box .overbox{
+		width: 100%;
+	}
+	.page-header h2 a{
+		float: left !important;
+	}
+	.page-header{
+		float: left;
+	}
+	.copyright{
+		float: left;
+	}
+	.page-header h2{
+		width:100%;
+	}
+}
+
+@media (min-width: 1000px) and (max-width: 1400px) {
+	.search{
+		width:50%;
+	}
+	.search input{
+		width: 100%;
+	}
+	.product-title{
+		width: 100%;
+	}
+	.box .overbox{
+		width: 100%;
+	}
+	.product-detail{
+		margin-right: 15px;
+		float: left;
+
+	}
+	.product-des{
+		float: right !important;
+		width: 65% !important;
+	}
+	.box img{
+		width: 100%;
+	}
+}
+
+@media (min-width: 900px) and (max-width: 1000px) {
+
+	.search{
+		display: none;
+	}
+	.search input{
+		width: 100%;
+		font-size: 16px;
+	}
+	.product-title{
+		width: 100%;
+	}
+	.box .overbox{
+		width: 100%;
+	}
+	.cart-info3{
+		margin-top: -95px;
+	}
+	.product-detail{
+		float: left;
+		margin-right: 15px;
+	}
+
+}
+
+@media (min-width: 728px) and (max-width: 900px) {
+	.search{
+		display: none;
+	}
+	.search input{
+		width: 100%;
+		font-size: 16px;
+	}
+	.product-title{
+		width: 100%;
+	}
+	.box .overbox{
+		width: 100%;
+	}
+	.cart-info3{
+		margin-top: -95px;
+	}
+	.product-detail{
+		float: left;
+		margin-right: 15px;
+	}
+	.box{
+		width: 42%;
+	}
+	footer img{
+		width: 100%;
+	}
+	footer .row{
+		margin: 0;
+	}
+}
+
+@media (min-width: 560px) and (max-width: 727px) {
+	nav{
+		float: left;
+		width: 100%;
+	}
+	.container{
+		float:left;
+	}
+	footer{
+		float: left;
+	}
+	footer .copyright{
+		float: left;
+		width: 100%;
+	}
+	footer .row{
+		margin: 0;
+	}
+	.cart-info3{
+		margin-top: -200px;
+	}
+	.logo-title{
+		font-size: 28px;
+	}
+	.search{
+		width: 100%;
+	}
+	.search input {
+		width:100%;
+		margin: 0 10px;
+	}
+
+	.container{
+		width: 100%;
+	}
+	.box{
+		width: 42%;
+	}
+	.product-title{
+		width: 100%;
+	}
+	.box .overbox{
+		width: 100%;
+	}
+}
+
+@media (min-width: 480px) and (max-width: 559px) {
+	nav{
+		float: left;
+		width: 100%;
+	}
+	.container{
+		float:left;
+	}
+	footer{
+		float: left;
+	}
+	footer .copyright{
+		float: left;
+		width: 100%;
+	}
+	footer .row{
+		margin: 0;
+	}
+	
+	.logo-title{
+		font-size: 28px;
+	}
+	.search{
+		width: 100%;
+		
+		
+	}
+	.search input {
+		width:100%;
+		margin: 0 10px;
+	}
+
+	.container{
+		width: 100%;
+	}
+	.box{
+		width: 90%;
+	}
+	.box img{
+		width: 100%;
+	}
+	.product-title{
+		width: 100%;
+	}
+	.box .overbox{
+		width: 100%;
+		height: 300px;
+	}
+	.cart-content{
+		width: 60%;
+	}
+	.cart-info3{
+		margin-top: -200px;
+		width: 45%;
+	}
+	.logo-title{
+		font-size: 24px;
+	}
+}
+
+@media (min-width: 321px) and (max-width: 479px) {
+	nav{
+		float: left;
+		width: 100%;
+	}
+	.container{
+		float:left;
+	}
+	footer{
+		float: left;
+	}
+	footer .copyright{
+		float: left;
+		width: 100%;
+	}
+	footer .row{
+		margin: 0;
+	}
+	
+	.logo-title{
+		font-size: 28px;
+	}
+	.search{
+		width: 100%;
+		
+		
+	}
+	.search input {
+		width:100%;
+		margin: 0 10px;
+	}
+
+	.container{
+		width: 100%;
+	}
+	.box{
+		width: 90%;
+	}
+	.box img{
+		width: 100%;
+	}
+	.product-title{
+		width: 100%;
+	}
+	.box .overbox{
+		width: 100%;
+		height: 300px;
+	}
+	.cart-content{
+		width: 60%;
+	}
+	.cart-info3{
+		width: 94%;
+		margin: 0 10px 10px 10px;
+	}
+	
+}
+

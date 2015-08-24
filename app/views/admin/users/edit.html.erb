@@ -1,0 +1,42 @@
+<div class="page-header">
+  <h2>Edit user <a href="/admin/users" class="btn btn-primary" style="float:right">Back</a></h2>
+
+</div>
+<%=form_for  :user, url: admin_user_path(@user), method: :patch do |f|%>
+	<div class="form-group">
+    	<label for="exampleInputEmail1">Email address</label>
+    	<%=f.email_field :email, :class=>'form-control', :placeholder=>'Enter you email'%>
+  	</div>
+
+    <div class="form-group">
+      <label for="exampleInputFullName">Fullname</label>
+      <%=f.text_field :fullname, :class=>'form-control', :placeholder=>'Enter you fullname'%>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputFullName">Address</label>
+      <%=f.text_field :address, :class=>'form-control', :placeholder=>'Enter you address'%>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputFullName">Phone</label>
+      <%=f.text_field :phone, :class=>'form-control', :placeholder=>'Enter you phone'%>
+    </div>
+
+  	<div class="form-group">
+    	<label for="exampleInputRole" style="margin-right:15px;">Role</label>
+    	<label class="radio-inline">
+		  <%=f.radio_button :role, 'admin'%> Admin
+		</label>
+		<label class="radio-inline">
+		  <%=f.radio_button :role, 'sale' %> Sale
+		</label>
+		<label class="radio-inline">
+		  <%=f.radio_button :role, 'none' %> None
+		</label>
+  	</div>
+  	<div class="form-group" style="border-top:#000 solid 1px; padding-top:15px;">
+  		<%=f.submit 'Update', :class=>'btn btn-primary' %>
+      <button type="reset" class="btn btn-danger">Reset</button>
+  	</div>
+<%end%>

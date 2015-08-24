@@ -1,0 +1,146 @@
+<div class="page-header">
+	<h2>Orders Manager</h2>
+</div>
+
+<!-- tabs -->
+
+<div class="main">
+  
+		  <input id="tab1" type="radio" name="tabs" checked>
+		  <label id="tab11" for="tab1">Pending</label>
+	
+		  <input id="tab2" type="radio" name="tabs">
+		  <label id="tab22" for="tab2">Success</label>
+	
+		  <input id="tab3" type="radio" name="tabs">
+		  <label id="tab33" for="tab3">Cancel</label>
+	
+		  
+	
+		  <div class="content">  
+			  <div id="content1">
+				<table class="table table-bordered">
+					<tr>
+						<th>Name</th>
+						<th>ReciverDate</th>
+						<th>ReciverAddress</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Total</th>
+						<th>Created_at</th>
+						<th>Success / Cancel / Show</th>
+						
+					</tr>
+					<%@orders.each do |pending|%>
+						<tr>
+							<td>
+								<% us = User.find(pending.user_id) %>
+								<%=us.fullname %>
+							</td>
+							<td><%=pending.reciverdate.strftime('%d-%m-%y')%></td>
+							<td><%=pending.reciveraddress%></td>
+							<td><%=pending.email%></td>
+							<td><%=pending.phone%></td>
+							<td><%=number_to_currency(pending.total)%></td>
+							<td><%=pending.created_at.strftime('%d-%m-%y %H:%M:%S')%></td>
+							<td style="padding-left:50px;">
+								<form style="width:30px; float:left" action="/admin/orders/setstatus_success" method="get">
+									<input type="hidden" name="id" value='<%=pending.id%>'>
+									<button style="font-size:24px; background:none; border:none" type="submit" class="glyphicon glyphicon-ok-circle"></button>
+								</form>
+								<form style="width:30px; float:left" action="/admin/orders/setstatus_cancel" method="get">
+									<input type="hidden" name="id" value='<%=pending.id%>'>
+									<button style="font-size:24px; background:none; border:none" type="submit" class="glyphicon glyphicon-remove-circle"></button>
+								</form>
+								<%=link_to '', admin_order_path(pending),style: "font-size:24px;border:none; float:left; padding-left:6px;color:#000", class: "icon glyphicon glyphicon-share" %>
+							</td>
+						</tr>
+					<%end%>
+				</table>
+				<%= paginate @orders %>
+			  </div>
+	
+			  <div id="content2">
+				<table class="table table-bordered">
+					<tr>
+						<th>Name</th>
+						<th>ReciverDate</th>
+						<th>ReciverAddress</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Total</th>
+						<th>Status</th>
+						<th>Created_at</th>
+						<th></th>
+						
+						
+					</tr>
+					<%@orders1.each do |success|%>
+						<tr>
+							<td>
+								<% us = User.find(success.user_id) %>
+								<%=us.fullname %>
+							</td>
+							<td><%=success.reciverdate.strftime('%d-%m-%y')%></td>
+							<td><%=success.reciveraddress%></td>
+							<td><%=success.email%></td>
+							<td><%=success.phone%></td>
+							<td><%=number_to_currency(success.total)%></td>
+							<td><span class="btn btn-primary"><%=success.status%></span></td>
+							<td><%=success.created_at.strftime('%d-%m-%y %H:%M:%S')%></td>
+							<td><%=link_to '', admin_order_path(success),style: "font-size:24px; float:left; padding-left:6px;color:#000", class: "glyphicon glyphicon-share" %></td>
+							
+						</tr>
+					<%end%>
+				</table>
+				<%= paginate @orders1 %>
+			  </div>
+	
+			  <div id="content3">
+				<table class="table table-bordered">
+					<tr>
+						<th>Name</th>
+						<th>ReciverDate</th>
+						<th>ReciverAddress</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Total</th>
+						<th>Status</th>
+						<th>Created_at</th>
+						<th></th>
+						
+					</tr>
+					<%@orders2.each do |cancel|%>
+						<tr>
+							<td>
+								<% us = User.find(cancel.user_id) %>
+								<%=us.fullname %>
+							</td>
+							<td><%=cancel.reciverdate.strftime('%d-%m-%y')%></td>
+							<td><%=cancel.reciveraddress%></td>
+							<td><%=cancel.email%></td>
+							<td><%=cancel.phone%></td>
+							<td><%=number_to_currency(cancel.total)%></td>
+							<td><span class="btn btn-danger"><%=cancel.status%></span></td>
+							<td><%=cancel.created_at.strftime('%d-%m-%y %H:%M:%S')%></td>
+							<td><%=link_to '', admin_order_path(cancel),style: "font-size:24px; float:left; padding-left:6px;color:#000", class: "glyphicon glyphicon-share" %></td>
+							
+						</tr>
+					<%end%>
+				</table>
+				<%= paginate @orders2 %>
+			  </div>
+	
+			  
+	
+</div>
+
+<style type="text/css">
+	table th{
+		text-align: center;
+	}
+	table td{
+		text-align: center;
+		vertical-align: middle !important;
+	}
+</style>

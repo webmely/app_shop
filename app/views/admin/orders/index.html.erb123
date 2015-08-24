@@ -1,0 +1,35 @@
+<div class="page-header">
+    <h2>Orders Manager</h2>
+</div>
+<table class="table table-bordered">
+	<tr>
+		<th>Name</th>
+		<th>ReciverDate</th>
+		<th>ReciverAddress</th>
+		<th>Email</th>
+		<th>Phone</th>
+		<th>Total</th>
+		<th>Status</th>
+		<th>Created_at</th>
+	</tr>
+	
+	<%@orders.each do |o|%>
+		<tr>
+			<td></td>
+			<td><%=o.reciverdate.strftime('%d-%m-%y')%></td>
+			<td><%=o.reciveraddress%></td>
+			<td><%=o.email%></td>
+			<td><%=o.phone%></td>
+			<td><%=number_to_currency(o.total)%></td>
+			<td><%=o.status%></td>
+			<td><%=o.created_at.strftime('%d-%m-%y %H:%M:%S')%></td>
+			<td>
+				<form action="/admin/orders/setstatus_success" method="get">
+					<input type="hidden" name="id" value='<%=o.id%>'>
+					<button type="submit" class="btn btn-primary">Success</button>
+				</form>
+			</td>
+		</tr>
+	<%end%>
+</table>
+

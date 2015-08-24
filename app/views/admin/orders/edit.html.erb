@@ -1,0 +1,15 @@
+<%=form_for :order, url: admin_order_path(@order), method: :patch do |f|%>
+	<div class="form-group">
+    	<label for="exampleInputEmail1">Date</label>
+    	<%=f.text_field :reciverdate, :class=>'form-control', :placeholder=>'Enter you product name'%>
+  	</div>
+
+  	<div class="form-group">
+    	<label for="exampleInputEmail1">Status</label>
+    	<%=f.text_field :status, :class=>'form-control', :placeholder=>'Enter you product name'%>
+  	</div>
+  	<div class="button-submit form-group">
+  		<%=f.submit 'Update Order', :class=>'btn btn-primary' %>
+      <button type="reset" class="btn btn-danger">Reset</button>
+  	</div>
+<%end%>

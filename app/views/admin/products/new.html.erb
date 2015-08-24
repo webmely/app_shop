@@ -1,0 +1,62 @@
+<div class="page-header">
+  <h2>New product <a href="/admin/products" class="btn btn-primary" style="float:right">Back</a></h2>
+
+</div>
+<%=form_for  :product, url: admin_products_path do |f|%>
+	<div class="form-group">
+    	<label for="exampleInputEmail1">Product name</label>
+    	<%=f.text_field :title, :class=>'form-control', :placeholder=>'Enter you product name'%>
+  	</div>
+
+  	<div class="form-group">
+    	<label for="exampleInputPassword">Description</label>
+    	<%=f.text_area :des, :class=>'form-control', :placeholder=>'Enter you product description', :style=>'height:120px;'%>
+  	</div>
+
+    <div class="form-group">
+      <label for="exampleInputFullName">Price</label>
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <%=f.text_field :price, :class=>'form-control', :placeholder=>'Enter you product price'%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputFullName">Quantity</label>
+      <%=f.text_field :quantity, :class=>'form-control', :placeholder=>'Enter you product quantity'%>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFullName">Product Image</label>
+      <%=f.file_field :photo%>
+      <img id="image_preview" src="#" alt="your image" />
+    </div>
+    
+  	<div class="button-submit form-group">
+  		<%=f.submit 'Create Product', :class=>'btn btn-primary' %>
+      <button type="reset" class="btn btn-danger">Reset</button>
+  	</div>
+<%end%>
+<style type="text/css">
+  #image_preview{
+    display:none;
+  }
+</style>
+<script>
+  function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#image_preview').attr('src', e.target.result);
+            $('#image_preview').attr('style', 'display:block; margin-top:10px; width:200px;')
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#product_photo").change(function(){
+      readURL(this);
+  });
+</script>

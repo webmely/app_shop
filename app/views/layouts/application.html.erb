@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Men Shop.</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div style="width:100%; height:110px" class="head-custom">
+    <div class="col-md-8">
+      <a href="/welcome/index">
+        <%=image_tag('logo.png',style:"width:90px; margin:10px;")  %>
+        <span class="logo-title">{Web}<strong>mely</strong></span>
+      </a>
+      <div class="search">
+        <form action="/products/search/" method="get">
+          <input type="text"  class="form-control" placeholder="Search product name and press enter" name="q" id="q" />
+
+        </form>
+      </div>
+
+    </div>
+    <div class="col-md-4" style="text-align:right">
+      <div class="cart-info3">
+      <a href="/cart">
+        <%=image_tag('cart.png', style:"width:60px; margin:10px; margin-right:-18px;", alt:'View cart')  %>
+      </a>
+      <div style="" class="cart-content">
+          <% if !session["cart"].nil? %>
+          <% 
+            tongtien = 0
+            i = 0
+          %>
+          <% session["cart"].each do |s| %>
+          <% i = i+1 %>
+          <% tongtien = tongtien + s['total']%>
+            
+          <%end%>  
+            <p class="cart-info"><%= i %> items</p>
+            <p class="cart-info2"><%=number_to_currency(tongtien) %></p>
+          <% else %>
+            <p class="cart-info">0 items</p>
+            <p class="cart-info2">0 $</p>
+          <%end%>
+            
+      </div>
+      </div>
+    </div>
+</div>
+<!-- nav menu -->
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" style="text-decoration:none; display:none" href="/welcome/index">{Web}<strong>mely</strong></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active">
+        	<a href="/welcome/index">Home<span class="sr-only">(current)</span></a>
+        </li>
+        
+        <li>
+        	<a href="/products/">Product</a>
+        </li>
+      </ul>
+      
+      
+      <!-- login, logout -->
+      <p class="navbar-text pull-right">
+      
+
+		<% if user_signed_in? %>
+		  Logged in as <strong><%= current_user.email %></strong>.
+		  <%= link_to 'View profile', users_show_path, :class => 'navbar-link' %> |
+      <%= link_to 'View orders', '/orders/show', :class => 'navbar-link' %> |
+      <% if current_user.role == "admin" || current_user.role == "sale"%>
+      <%= link_to 'View admin', '/admin', :class => 'navbar-link', :target => '_parent' %> |
+      <%end%>
+		  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+		<% else %>
+		  <%=link_to "Login", new_user_session_path, :class=>'navbar-link', :style=>'text-decoration:none'%> | 
+		  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' ,:style => 'text-decoration:none' %>
+      
+		<% end %>
+		</p>
+      <!-- end login , log_out -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- end nav menu -->
+
+<!--body -->
+<div class="container">
+  <%= yield %>
+</div>
+<!-- ed body -->
+<!-- footer -->
+<footer>
+  <section id="footer-top">
+    <div class="container">
+      <div class="row">
+        <!-- col about -->
+            <div class=" footer-about col-sm-4 col-md-4">
+              <h3>About us</h3>
+              <p>Webmely is a fast growing web development company base in Hochiminh city</p>
+              <p>
+                <i class="fa fa-map-market"></i>
+                22/4 Lu Gia street, Hochiminh city
+              </p>
+              <p>
+                <i class="fa fa-phone"></i>
+                (+84) 090-7417-510
+              </p>
+              <p>
+                <i class="fa fa-envelope"></i>
+                webmely@gmail.com
+              </p>
+            </div>
+        <!-- end col about -->
+        <!-- col last new -->
+            <div class="footer-about col-sm-4 col-md-4">
+              <h3>Lastet News</h3>
+              <ul class="media-list">
+                <li class="media">
+                  <h5><a href="#">Link to test first blog</a></h5>
+                  <p>Test content in fisrt blog</p>
+                </li>
+                <li class="media">
+                  <h5><a href="#">Link to test secon blog</a></h5>
+                  <p>Test content in secon blog</p>
+                </li>
+              </ul>
+            </div>
+        <!-- end col last new -->
+        <!-- col map -->
+            <div class="col-sm-4 col-md-4">
+            <img src="http://www.archifx.com/uploads/web-design-services-tampa.png" alt="Webmely company" />
+            </div>
+        <!-- end col map -->
+      </div>
+    </div>
+  </section>
+  <section class="copyright">
+    <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-6">Copyright &copy;2015 Webmely. All rights reserved</div>
+    </div>
+    </div>
+  </section>
+</footer>
+<!-- end footer -->
+
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<div class="row">
+	<%@products.each do |product|%>
+		<div class="product col-md-3" style="margin-bottom:30px;" >
+			<div class="product_image">
+			<div class="product-title"><%=link_to product.title , product_path(product) %></div>
+				<a href='<%=product_path(product) %>'>
+					<%=image_tag product.photo.url(:small) %>
+				</a>
+				<div class="price">
+					<span><%= number_to_currency(product.price) %></span> 
+
+							<div class="addtocart ">
+							<form action="/cart/add_to_cart/" method="get">
+								<input type="hidden" name="id" value='<%= product.id %>' />
+								<input type="hidden" name="name" value=' <%=product.title%>' />
+								<input type="hidden" name="price" value=' <%=product.price%>' />
+								<input type="hidden" name="quantity" value=' <%=product.quantity%>' />
+								<input type="submit" value="Add to cart" class="btn btn-primary " />
+							</form>
+						</div>
+					</div>
+				</div>
+		</div>
+
+	<%end%>
+
+</div>

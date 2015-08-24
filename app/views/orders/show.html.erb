@@ -1,0 +1,45 @@
+<div class="page-header">
+  <h2>Orders Information <a href="/users/show" class="btn btn-primary" style="float:right">View Profile</a></h2>
+
+</div>
+<div class="table-responsive">
+<table class="table table-bordered">
+	<tr>
+		<th>Id</th>
+		<th>RevicerDate</th>
+		<th>RevicerAddress</th>
+		<th>Email</th>
+		<th>Phone</th>
+		<th>Created_at</th>
+		<th>Status</th>
+	</tr>
+	<%@order.each do |h|%>
+		<tr>
+			<td><%=h.id%></td>
+			<td><%=h.reciverdate.strftime('%d-%m-%y')%></td>
+			<td><%=h.reciveraddress%></td>
+			<td><%=h.email%></td>
+			<td><%=h.phone%></td>
+			<td><%=h.created_at.strftime('%d-%m-%y %H:%M:%S')%></td>
+			<td>
+				<% if h.status == "pending" %>
+					<span class="btn btn-primary"><%=h.status%></span>
+				<% elsif h.status == "success"%>
+					<span class="btn btn-success"><%=h.status%></span>
+				<%else%>
+					<span class="btn btn-danger"><%=h.status%></span>
+				<%end%>
+			</td>
+		</tr>
+	<%end%>
+</table>
+</div>
+<%= paginate @order  %>
+<style type="text/css">
+	table th{
+		text-align: center;
+	}
+	table td{
+		text-align: center;
+	}
+</style>

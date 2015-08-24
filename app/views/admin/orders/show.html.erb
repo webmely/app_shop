@@ -1,0 +1,59 @@
+<div class="page-header">
+	<h2>Orders Details</h2>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-6 col-md-4">
+			<p class="lable-p">Custommer Name</p>
+			<p class="lable-p">ReciverDate</p>
+			<p class="lable-p">ReciverAddress</p>
+			<p class="lable-p">Email</p>
+			<p class="lable-p">Phone</p>
+			<p class="lable-p">Total</p>
+			<p class="lable-p">Created_at</p>
+			<p class="lable-p">Status</p>
+		</div>
+		<div class="col-xs-6 col-md-8">
+			<p class="lable-data">
+			<%
+				usr = User.find(@order.user_id)
+			%>
+			<%=usr.fullname%>
+			</p>
+			<p class="lable-data"><%=@order.reciverdate.strftime('%d-%m-%Y')%></p>
+			<p class="lable-data"><%=@order.reciveraddress%></p>
+			<p class="lable-data"><%=@order.email%></p>
+			<p class="lable-data"><%=@order.phone%></p>
+			<p class="lable-data"><%=number_to_currency(@order.total)%></p>
+			<p class="lable-data"><%=@order.created_at.strftime('%d-%m-%Y %H:%M:%S')%></p>
+			<p class="lable-data"><span style="margin-top:-11px;" class="btn btn-primary"><%=@order.status%></span></p>
+		</div>
+	</div>
+</div>
+
+<div class="page-header">
+	<h2>Product Information</h2>
+</div>
+
+<table class="table table-bordered">
+	<tr>
+		<th>STT</th>
+		<th>Product Name</th>
+		<th>Quantity</th>
+		<th>Price</th>
+		<th>Total</th>
+	</tr>
+	<% ord = Orderdetail.where(order_id: @order.id) %>
+	<% i = 0 %>
+	
+	<% ord.each do |p| %>
+		<tr>
+			<td><%= (i = i +1 ) %></td>
+			<td><%= p.productname %></td>
+			<td><%= p.quantity %></td>
+			<td><%= number_to_currency(p.price) %></td>
+			<td><%= number_to_currency(p.price_total) %></td>
+		</tr>
+	<%end%>
+
+</table>

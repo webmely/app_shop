@@ -1,0 +1,89 @@
+<h1>Cart information</h1>
+
+<form action="/cart/update_quantity_to_cart" >
+<table class="cart table table-bordered">
+	<tr>
+		<th>STT</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Quantity</th>
+		<th>Total</th>	
+		<th></th>
+	</tr>
+	
+	<%if !session["cart"].nil? %>
+		<%
+			i = 0
+			tongtien = 0
+			session["cart"].each do |s|
+		%>
+			<tr>
+				<td><%= (i = i+1) %></td>
+				<td><%= s['name'] %></td>
+				<td><%= number_to_currency(s['price']) %></td>
+				<td data-product-id="<%=s['id']%>" style="width:130px;">
+
+						<%= number_field_tag 'quantity_update', s['quantity'], :class=>"form-control input-quantity", :min=>1 %>
+					
+				</td>
+				<td><%= number_to_currency(s['total']) %></td>
+				<td>
+					<a class="delete-product" href="<%= url_for :controller => 'cart', :action => 'delete_product_to_cart', :id => s['id'] %>">
+						<%=image_tag ("delete-icon.png"), :alt=>"Delete product to cart"%>
+					</a>
+				</td>
+				<% tongtien = tongtien + s['total'] %>
+			</tr>
+		<% end %>
+		<tfoot>
+			<tr>
+				<td colspan="5"><strong>Total : </strong></td>
+				<td><strong><%=number_to_currency(tongtien) %></strong></td>
+			</tr>
+		</tfoot>
+	<% else %>
+		<tr>
+			<td colspan="6" style="text-align:center; font-size:15px;">Cart is empty ...! </td>
+		</tr>
+	<% end %>
+</table>
+</form>
+
+<div class="row">
+	<div class="col-md-6">
+		<% if !user_signed_in? %>
+			<h4 style="color:red">Important : You logined is checkout !!!</h4>
+		<%end%>
+	</div>
+	<div class="col-md-4 button-navigation" style="padding-right:15px !important">
+		<%=link_to 'Continue Shopping Cart', '/products', :class=>"btn btn-primary"%>
+		<% if user_signed_in? %>
+			<% if session["cart"]==[] || session["cart"].nil?%>
+				<%=link_to 'Check out', '/orders/new', :class=>"btn btn-danger" , :target=>'_parent', :onclick=>"alert('No product is cart. Please add product to cart is checkout !'); return false" %>
+			<%else%>
+				<%=link_to 'Check out', '/orders/new', :class=>"btn btn-danger" , :target=>'_parent'%>
+			<%end%>
+		<%end%>
+	</div>
+</div>
+
+<!-- -->
+<script>
+//function update quantity
+	$(".input-quantity").change(function(){
+		var quantity = $(this).val();
+		var id = $(this).parent('td').attr('data-product-id');
+		console.log(quantity)
+		console.log(id)
+		jQuery.ajax({
+			url: "/cart/update_quantity_to_cart",
+			type: "GET",
+			data: {product_id: id, quantity_update: quantity},
+			success:function(data){
+				location.reload();
+			},
+			error:function (){}
+		});	
+	});
+
+</script>
