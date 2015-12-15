@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     #redirect_to root_url, :alert => 'Ban khong co quyen truy cap vao trang nay'
   	render :file => "#{Rails.root}/public/404.html", :status => 403, :layout => false
   end
+  #demo
 
 
   def configure_permitted_parameters
